@@ -6,7 +6,6 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import path from 'path'
 import morgan from 'morgan'
-
 dotenv.config()
 connectDb()
 
