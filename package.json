@@ -1,0 +1,41 @@
+{
+  "name": "2048game",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.1.2",
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "concurrently": "^7.4.0",
+    "cors": "^2.8.5",
+    "dompurify": "^2.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "nodemon": "^2.0.20",
+    "react-bootstrap": "2.5.0",
+    "react-router-bootstrap": "^0.26.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishithagentyala/2048Game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nishithagentyala/2048Game/issues"
+  },
+  "homepage": "https://github.com/nishithagentyala/2048Game#readme",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.12",
+    "postcss": "^8.4.18"
+  }
+}
