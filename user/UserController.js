@@ -37,7 +37,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 const userDetails = asyncHandler(async (req, res) => {
-  const users = await User.find({}).select('-password')
+  const users = await User.find({})
   res.json(users)
 })
 

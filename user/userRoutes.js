@@ -11,7 +11,7 @@ import { protect } from '../data/authMiddleware.js'
 
 router.post('/login', loginUser)
 router.post('/register', registerUser)
-router.route('/').get(userDetails)
+router.route('/').get(protect, userDetails)
 router
   .route('/profile')
   .get(protect, getUserProfile)
