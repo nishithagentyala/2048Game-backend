@@ -20,16 +20,10 @@ app.get('/', (req, res) => {
 
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 app.use(cors())
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/build')))
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-  )
-} else {
-  app.get('/', (req, res) => {
-    res.send('api running ')
-  })
-}
+
+app.get('/', (req, res) => {
+  res.send('api running ')
+})
 app.use('/api/users', userRoutes)
 app.use('/api/game', scoreRoutes)
 const port = process.env.PORT || 5000
