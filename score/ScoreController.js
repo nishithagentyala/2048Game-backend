@@ -3,25 +3,47 @@ import asyncHandler from 'express-async-handler'
 
 //post /api/game
 const addScore = asyncHandler(async (req, res) => {
-  const { score, bestscore, createdAt } = req.body
-  if (score === 0) res.status(404).send('ur score is zero')
-  else {
-    const score = new Score({
-      user: req.user._id,
-      score,
-      bestscore,
-      createdAt,
-    })
-    const addscore = await score.save()
-    res.status(201).json(addscore)
+  const { s, best } = req.body
+  const score = new Score({
+    user: req.user._id,
+    s,
+    best,
+    createdAt: Date.now(),
+  })
+  const createdScore = await score.save()
+  res.status(201).json(createdScore)
+})
+
+//  get  /api/game/mygames
+
+const getMyGames = asyncHandler(async (req, res) => {
+  const scores = await Score.find({ user: req.user._id })
+
+  res.json(scores)
+})
+
+//delete /api/game/mygames/id
+const deleteGame = asyncHandler(async (req, res) => {
+  const score = await Score.findById(req.params.id)
+
+  if (score) {
+    await score.deleteOne()
+    res.json({ message: 'score removed' })
+  } else {
+    res.status(404).send('score not found')
   }
 })
 
-//  get  /api/mygames
+//delete /api/game/mygames
+const deleteGames = asyncHandler(async (req, res) => {
+  const score = await Score.find({ user: req.user._id })
 
-const myGames = asyncHandler(async (req, res) => {
-  const games = await Score.find({}).populate('user', 'id name')
-  res.json(games)
+  if (score) {
+    await Score.deleteMany()
+    res.json({ message: 'score removed' })
+  } else {
+    res.status(404).send('score not found')
+  }
 })
 
-export { addScore, myGames }
+export { addScore, deleteGame, deleteGames, getMyGames }
