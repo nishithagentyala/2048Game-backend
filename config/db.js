@@ -2,13 +2,10 @@ import mongoose from 'mongoose'
 
 const connectDB = () => {
   try {
-    mongoose.connect(
-      'mongodb+srv://nishitha:Nishitha%400102@proshop.b6sdv9h.mongodb.net/2048Game',
-      {
-        useUnifiedTopology: true,
-        useNewUrlParser: true,
-      }
-    )
+    mongoose.connect(process.env.MONGO_URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    })
 
     console.log(`mongo database is connected!!! `)
   } catch (error) {
