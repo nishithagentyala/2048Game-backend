@@ -4,21 +4,13 @@ import userRoutes from './user/userRoutes.js'
 import ScoreRoutes from './score/ScoreRoutes.js'
 import dotenv from 'dotenv'
 import cors from 'cors'
-import path from 'path'
-import morgan from 'morgan'
+
 dotenv.config()
 connectDb()
 
 const app = express()
-
+app.use(cors())
 app.use(express.json())
-app.use(cors())
-app.get('/', (req, res) => {
-  res.send('home page 2048game')
-})
-
-if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
-app.use(cors())
 
 app.use('/api/users', userRoutes)
 app.use('/api/game', ScoreRoutes)
