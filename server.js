@@ -11,7 +11,9 @@ connectDb()
 const app = express()
 app.use(cors())
 app.use(express.json())
-
+app.get('/', (req, res) => {
+  res.send('2048 Home Page')
+})
 app.use('/api/users', userRoutes)
 app.use('/api/game', ScoreRoutes)
 
